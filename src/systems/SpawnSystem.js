@@ -26,7 +26,7 @@ export class SpawnSystem {
   }
 
   onExplosion(entityManager, grid, player) {
-    // Random number of chickens to spawn (60%, 30%, 10% distribution)
+    // Random number of chickens to spawn (50%, 35%, 15% distribution)
     const rand = Math.random()
     let spawnCount
     if (rand < SPAWN_PROBABILITY.ONE_CHICKEN) spawnCount = 1

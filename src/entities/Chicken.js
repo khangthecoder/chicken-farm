@@ -14,7 +14,7 @@ export class Chicken extends Entity {
     }
 
     const directionVector = this.getDirectionVector()
-    this.move(directionVector, game.grid)
+    this.move(directionVector, game.grid, game.entityManager)
   }
 
   getDirectionVector() {
@@ -30,11 +30,23 @@ export class Chicken extends Entity {
     )
   }
 
-  move(direction, grid) {
+  move(direction, grid, entityManager) {
     const newPos = grid.wrap(
       this.position.x + direction.x,
       this.position.y + direction.y
     )
+
+    // Check if target position has a barrier
+    const entitiesAtTarget = entityManager.getEntitiesAt(newPos.x, newPos.y)
+    const hasBarrier = entitiesAtTarget.some(e => e.type === 'barrier')
+
+    if (hasBarrier) {
+      // Stop at barrier
+      this.isStationary = true
+      return
+    }
+
+    // Always move - chickens can occupy the same tile and will explode via collision detection
     this.position.x = newPos.x
     this.position.y = newPos.y
   }

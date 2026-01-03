@@ -4,7 +4,7 @@ export const GRID_HEIGHT = 30
 export const TILE_SIZE = 20  // pixels
 
 // Game timing
-export const INITIAL_TICK_RATE = 500  // milliseconds per game tick
+export const INITIAL_TICK_RATE = 200  // milliseconds per game tick
 
 // Player configuration
 export const PLAYER_LIVES = 3
@@ -12,13 +12,13 @@ export const INVULNERABILITY_TICKS = 2  // Number of ticks player is invulnerabl
 
 // Spawning configuration
 export const SPAWN_DISTANCE_FROM_PLAYER = 3  // Minimum tiles away from player
-export const INITIAL_SPAWN_PERCENTAGE = 0.07  // 7% of grid tiles populated at start
+export const INITIAL_SPAWN_PERCENTAGE = 0.09  // 9% of grid tiles populated at start
 
-// Spawn probability after explosion (60%, 30%, 10% for 1, 2, 3 chickens)
+// Spawn probability after explosion (50%, 35%, 15% for 1, 2, 3 chickens)
 export const SPAWN_PROBABILITY = {
-  ONE_CHICKEN: 0.6,
-  TWO_CHICKENS: 0.9  // Cumulative: 0.6 + 0.3
-  // Three chickens: > 0.9
+  ONE_CHICKEN: 0.5,
+  TWO_CHICKENS: 0.85,  // Cumulative: 0.5 + 0.35
+  THREE_CHICKENS: 1.0  // Cumulative: 0.85 + 0.15
 }
 
 // Explosion timing (in game ticks)
